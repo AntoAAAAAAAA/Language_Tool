@@ -1,20 +1,23 @@
 import streamlit as st
 import pandas as pd
 import unicodedata
+from functions import load_data, get_data, save_data
 
 st.title('Language Access Tool (Spanish)')
 st.text('This dashboard was made to help healthcare professionals ease the very common language ' \
 'barrier experienced by Spanish-speaking patients in Texas.')
 st.divider()
 
-@st.cache_data
-def load_data():
-    return pd.read_csv('initial.csv', index_col='ID')
+# Load data from initial.csv and put it into df
+get_data()
+df = st.session_state.df
 
-df = load_data()
-df.columns = df.columns.str.strip()  # standardize column names
-df['Template'] = df['Template'].astype(bool) # ensure templates 1/0 value are boolean 
-df['Favorites'] = False # Make an empty Favorites column 
+
+# Save button will any changes to the 'disk' by changing the csv itself
+if st.button('Save'):
+    save_data()
+    st.toast('Saved to Disk')
+
 
 # Initialize favorites in session_state
 if 'Favorites' not in st.session_state:
@@ -59,20 +62,20 @@ if not note and "Note" in view.columns:
 # Drop the template column 
 view.drop(columns=['Template'], inplace=True)
 
+
 # Display table unless it is empty 
-if view.empty:
-    st.info('No matching phrases found. Try adjusting your filters.')
-else:
-    edited = st.data_editor(
-    view,
-    use_container_width=True,
-    hide_index=True,
-    column_config={'Favorites': st.column_config.CheckboxColumn(
-        label='⭐️',
-        help="Click to add/remove from favorites",
-        width="small"
-    )}
+edited = st.data_editor(
+view,
+use_container_width=True,
+hide_index=True,
+column_config={'Favorites': st.column_config.CheckboxColumn(
+    label='⭐️',
+    help="Click to add/remove from favorites",
+    width="small"
+)}
 )
+if view.empty:
+    st.info('No results found')
 
 # Persist favourites without losing hidden ones 
 new_favs_in_view = set(edited.loc[edited['Favorites']].index) #newly selected favorites 
@@ -82,4 +85,8 @@ prev_favs        = st.session_state['Favorites']
 st.session_state['Favorites'] = (prev_favs - rows_in_view) | new_favs_in_view 
 # (PF - RIV): makes sure that if you uncheck something in the new view, it goes away
 # new favs shows what the newly selected favorites are
-# the | allows for intersection between the newly editd group of old favs and the group of new favs 
+# the | allows for intersection between the newly edited group of old favs and the group of new favs 
+
+if st.button('Reset Data'):
+    st.session_state.df = st.session_state.original_df
+    st.toast('Data Reset to Original Translations')
