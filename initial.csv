@@ -1,0 +1,25 @@
+﻿ID,Category,English ,Spanish,Pronunciation,Note,Template
+1,Examination/Procedure,"I am going to take your blood pressure, temperature, and weight. Is that okay? ","Voy a tomar su presión arterial, temperatura y peso. ¿Está bien?",,,0
+2,Consent,Are you okay if a student is in the room with us? ,¿Está bien si un estudiante está en la sala con nosotros?,,,0
+3,General,Do you have any questions or concerns at the moment?,¿Tiene alguna pregunta o inquietud en este momento?,,,0
+4,General,Thank you very much for answering our questions ,Muchas gracias por responder nuestras preguntas,,,0
+5,General,Would you like anything to eat or drink while you wait?,¿Le gustaría algo de comer o beber mientras espera?,,,0
+6,History,Have you been here before? ,¿Ha estado aquí antes?,,,0
+7,History,Have you been to the hospital or emergency room recently?,¿Ha ido al hospital o a la sala de emergencias recientemente?,,,0
+8,History,Do you have a history of _____?,¿Tiene antecedentes de _____?,,,1
+9,History,Do you smoke? ,¿Fuma?,,,0
+10,History,"Do you drink alcohol? If so, how often? ","¿Toma alcohol? Si es así, ¿con qué frecuencia?",,,0
+11,Identity,Could you please tell me your full name and date of birth?,¿Podría decirme su nombre completo y su fecha de nacimiento?,,,0
+12,Identity,Can you please confirm your phone number and address?,"¿Puede confirmar su número de teléfono y dirección, por favor?",,,0
+13,Introduction,"Hi there, my name is ____ and I'll be taking care of you today. ","Hola, me llamo ____ y estaré a cargo de su cuidado hoy.",,,1
+14,Introduction,What is your name?,¿Cuál es su nombre?,,,0
+15,Introduction,Come on in and have a seat wherever you would like ,Pase y siéntese donde guste,,,0
+16,Introduction,Who is your primary caretaker?,¿Quién es su cuidador principal?,,,0
+17,Personal Health,Are you allergic to anything?,¿Es alérgico(a) a algo?,,,0
+18,Personal Health,Do you take any recreational drugs?,¿Consume alguna droga recreativa?,,,0
+19,Personal Health,Are you currently taking any medications?,¿Está tomando algún medicamento actualmente?,,,0
+20,Personal Health,Are you pregnant?,¿Está embarazada?,,,0
+21,Reason for Visit,What brings you in today?,¿Qué lo/la trae hoy por aquí?,,,0
+22,Reason for Visit,How long have you been experiencing this issue? ,¿Cuánto tiempo lleva con este problema?,,,0
+23,Reason for Visit,"On a scale of 1-10, how would you rate your pain? ","En una escala del 1 al 10, ¿cómo calificaría su dolor?",,,0
+24,Reason for Visit,How are you feeling today? ,¿Cómo se siente hoy?,,,0
