@@ -14,9 +14,9 @@ df = st.session_state.df
 
 
 # Save button will any changes to the 'disk' by changing the csv itself
-if st.button('**Save**'):
+if st.button('**Save to Disk**'):
     save_data()
-    st.toast('Saved to Disk')
+    st.toast('Saved to Disk!')
 
 
 # Initialize favorites in session_state
@@ -94,7 +94,7 @@ def dialogue():
     col1, col2, col3, col4 = st.columns(4)
     if col2.button('Yes'):
         st.session_state.df = st.session_state.original_df.copy()
-        st.toast('Data Reset to Original Translations')
+        st.rerun()
     if col3.button('Cancel'):
         st.rerun()
 

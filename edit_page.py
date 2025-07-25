@@ -60,7 +60,7 @@ if st.button('Add to translation table'):
     st.session_state.df = df # update session state
 st.divider()
 
-st.markdown("# ")
-if st.button('Save'): 
+st.markdown(" ")
+if st.button('Save to Disk'): 
     save_data()
     st.toast('Saved to Disk!')
