@@ -14,7 +14,7 @@ df = st.session_state.df
 
 
 # Save button will any changes to the 'disk' by changing the csv itself
-if st.button('Save'):
+if st.button('**Save**'):
     save_data()
     st.toast('Saved to Disk')
 
@@ -87,6 +87,16 @@ st.session_state['Favorites'] = (prev_favs - rows_in_view) | new_favs_in_view
 # new favs shows what the newly selected favorites are
 # the | allows for intersection between the newly edited group of old favs and the group of new favs 
 
-if st.button('Reset Data'):
-    st.session_state.df = st.session_state.original_df
-    st.toast('Data Reset to Original Translations')
+@st.dialog('Are you sure you want to reset data?')
+def dialogue():
+    st.write('Resetting data will reset your current translations all back to the original dataset that came when this app was first ran.')
+    st.write('Press Yes, to continue, otherwise press Cancel.')
+    col1, col2, col3, col4 = st.columns(4)
+    if col2.button('Yes'):
+        st.session_state.df = st.session_state.original_df.copy()
+        st.toast('Data Reset to Original Translations')
+    if col3.button('Cancel'):
+        st.rerun()
+
+if st.button('**Reset Data**'):
+    dialogue()

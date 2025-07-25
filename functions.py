@@ -16,4 +16,7 @@ def get_data():
     return st.session_state.df
 
 def save_data():
-    st.session_state['df'].to_csv('initial.csv')
+    df = st.session_state["df"]
+    if df.index.name is None:
+        df.index.name = "ID"
+    df.to_csv("initial.csv", index=True, index_label="ID")
